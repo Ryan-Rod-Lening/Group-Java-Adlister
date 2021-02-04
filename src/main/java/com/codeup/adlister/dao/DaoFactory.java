@@ -1,8 +1,17 @@
 package com.codeup.adlister.dao;
 
-public class DaoFactory {
+import com.codeup.adlister.controllers.AdsIndexServlet;
+import com.codeup.adlister.models.Ad;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+
+public class DaoFactory extends AdsIndexServlet {
     private static Ads adsDao;
     private static Users usersDao;
+
     private static Config config = new Config();
 
     public static Ads getAdsDao() {

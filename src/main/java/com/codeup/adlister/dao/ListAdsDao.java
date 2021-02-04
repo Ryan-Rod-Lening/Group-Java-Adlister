@@ -8,12 +8,14 @@ import java.util.List;
 public class ListAdsDao implements Ads {
     private List<Ad> ads;
 
+
     public List<Ad> all() {
         if (ads == null) {
             ads = generateAds();
         }
         return ads;
     }
+
 
     public Long insert(Ad ad) {
         // make sure we have ads
@@ -26,6 +28,16 @@ public class ListAdsDao implements Ads {
         ads.add(ad);
         return ad.getId();
     }
+
+    @Override
+    public List<Ad> SearchedAd(String userInput) {
+       if (userInput.equals(ads))
+        {
+           ads = generateAds();
+        }
+        return ads;
+    }
+
 
     private List<Ad> generateAds() {
         List<Ad> ads = new ArrayList<>();
