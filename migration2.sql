@@ -1,6 +1,6 @@
 use adlister_db;
 drop table if exists ad_category;
-drop table if exists category;
+drop table if exists categories;
 drop table if exists ads;
 drop table if exists users;
 # create table users (
@@ -38,7 +38,7 @@ drop table if exists users;
 --  SELECT * FROM ads;
 
 
-
+# SET FOREIGN_KEY_CHECKS=0;
 
 CREATE TABLE users(
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -52,12 +52,11 @@ CREATE TABLE ads(
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
-    category VARCHAR(255),
     user_id INT UNSIGNED,
     FOREIGN KEY (user_id) references users (id)
 );
 
-CREATE TABLE category(
+CREATE TABLE categories(
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255)
 );
@@ -66,8 +65,10 @@ CREATE TABLE ad_category(
     ad_id INT UNSIGNED,
     category_id INT UNSIGNED,
     FOREIGN KEY (ad_id) references ads (id),
-    FOREIGN KEY (category_id) references category (id)
+    FOREIGN KEY (category_id) references categories (id)
 );
+ALTER TABLE ad_category DISABLE KEYS;
+
 
 -- INSERT INTO users(email, password) VALUES ('matt@matt.matt', 'password1');
 -- INSERT INTO users(email, password) VALUES ('mandy@dog.cat', 'password2');

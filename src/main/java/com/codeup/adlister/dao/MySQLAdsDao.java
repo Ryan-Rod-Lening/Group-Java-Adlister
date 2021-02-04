@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.Category;
 import com.mysql.cj.jdbc.Driver;
 
 import java.io.FileInputStream;
@@ -54,6 +55,38 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error creating a new ad.", e);
         }
     }
+
+
+    public Long getAdById(long userId, String title) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT id FROM ads WHERE title = ? AND user_id = ?");
+            stmt.setString(1, title);
+            stmt.setLong(2, userId);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()) {
+                System.out.println(rs);
+                return rs.getLong(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+        return null;
+    }
+//    public Long insertCategoryIntoAd(Ad ad, Category category) {
+//        try {
+//            String insertQuery = "UPDATE ads SET category = ? where id = ?";
+//            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+//            stmt.setLong(1, ad.getUserId());
+//            stmt.setString(2, ad.getTitle());
+//            stmt.executeUpdate();
+//            ResultSet rs = stmt.getGeneratedKeys();
+//            rs.next();
+//            return rs.getLong(1);
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error creating a new ad.", e);
+//        }
+//    }
 
 
     private Ad extractAd(ResultSet rs) throws SQLException {

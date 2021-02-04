@@ -24,18 +24,25 @@ public class ListAdsDao implements Ads {
         }
         // we'll assign an "id" here based on the size of the ads list
         // really the dao would handle this
-        ad.setId((long) ads.size());
+        ad.setId(ads.size());
         ads.add(ad);
         return ad.getId();
     }
 
     @Override
+
     public List<Ad> SearchedAd(String userInput) {
        if (userInput.equals(ads))
         {
            ads = generateAds();
         }
         return ads;
+    }
+
+
+
+    public Long getAdById(long userId, String string) {
+        return null;
     }
 
 
