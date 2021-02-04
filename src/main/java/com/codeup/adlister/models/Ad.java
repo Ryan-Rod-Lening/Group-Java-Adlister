@@ -1,5 +1,6 @@
 package com.codeup.adlister.models;
 
+
 public class Ad {
     private long id;
     private long userId;
@@ -33,6 +34,11 @@ public class Ad {
         this.description = description;
         this.category = category;
     }
+
+
+
+
+
 
 
     public long getId() {

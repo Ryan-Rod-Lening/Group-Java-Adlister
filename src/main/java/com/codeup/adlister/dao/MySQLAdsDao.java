@@ -56,6 +56,7 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+
     public Long getAdById(long userId, String title) {
         PreparedStatement stmt = null;
         try {
@@ -87,6 +88,7 @@ public class MySQLAdsDao implements Ads {
 //        }
 //    }
 
+
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
             rs.getLong("id"),
@@ -103,4 +105,17 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
+    @Override
+    public List<Ad> SearchedAd(String userInput) {
+        String query = "SELECT * FROM ads WHERE title like ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, userInput);
+            return createAdsFromResults(stmt.executeQuery());
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding a Ad by Title", e);
+        }
+    }
+
 }
