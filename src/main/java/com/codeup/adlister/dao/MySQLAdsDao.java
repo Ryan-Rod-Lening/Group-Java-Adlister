@@ -56,6 +56,22 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    public Long getAdById(long userId, String title) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT id FROM ads WHERE title = ? AND user_id = ?");
+            stmt.setString(1, title);
+            stmt.setLong(2, userId);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()) {
+                System.out.println(rs);
+                return rs.getLong(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+        return null;
+    }
 //    public Long insertCategoryIntoAd(Ad ad, Category category) {
 //        try {
 //            String insertQuery = "UPDATE ads SET category = ? where id = ?";
