@@ -34,13 +34,6 @@ public class Ad {
         this.category = category;
     }
 
-    public Ad(long id, String category) {
-        this.id = id;
-        this.userId = userId;
-        this.title = title;
-        this.description = description;
-        this.category = category;
-    }
 
     public long getId() {
         return id;

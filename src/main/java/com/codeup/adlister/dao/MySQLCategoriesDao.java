@@ -21,6 +21,35 @@ public class MySQLCategoriesDao implements Categories {
         }
     }
 
+    public Category selectMatchingCategories(String category) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM categories WHERE name LIKE ?");
+            String searchTermWithWildcards = "%" + category + "%";
+            stmt.setString(1, searchTermWithWildcards);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()) {
+                System.out.println(rs.getString(1));
+                System.out.println(rs.getString(2));
+//                System.out.println(rs.getString(2));
+                // do something with the search results
+                return new Category(
+                        rs.getInt(1),
+                        rs.getString(2)
+                );
+//                return (Category) rs.getObject(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+        return null;
+    }
+
+    @Override
+    public void matchParamToId(String category) {
+
+    }
+
     public void insert(Category category){
 //        try {
 //            String insertQuery = "INSERT INTO ads(user_id, title, description) VALUES (?, ?, ?)";
