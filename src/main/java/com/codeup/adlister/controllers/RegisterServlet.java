@@ -8,7 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
+import java.sql.SQLException;
+
+import static javax.swing.JOptionPane.getRootFrame;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
@@ -32,11 +37,16 @@ public class RegisterServlet extends HttpServlet {
             response.sendRedirect("/register");
             return;
         }
-
-        // create and save a new user
-        User user = new User(username, email, password);
-        DaoFactory.getUsersDao().insert(user);
-        request.getSession().setAttribute("user", user);
-        response.sendRedirect("/profile");
+        try {
+            // create and save a new user
+            User user = new User(username, email, password);
+            DaoFactory.getUsersDao().insert(user);
+            request.getSession().setAttribute("user", user);
+            response.sendRedirect("/profile");
+        } catch(RuntimeException e) {
+//            response.sendRedirect("/userAlreadyExists.jsp");
+            request.getSession().setAttribute("Error", "That Username and/email is already in use");
+            response.sendRedirect("/register");
+        }
     }
 }

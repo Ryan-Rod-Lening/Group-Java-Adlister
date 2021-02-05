@@ -42,9 +42,10 @@ drop table if exists users;
 
 CREATE TABLE users(
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL,
+    CONSTRAINT uc_username_email UNIQUE (username, email)
 
 );
 
