@@ -2,8 +2,11 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
+
         <jsp:param name="title" value="Create a new Ad" />
     </jsp:include>
+    <jsp:include page="/WEB-INF/partials/UserNavbar.jsp" />
+    <jsp:include page="/WEB-INF/partials/leftNav.jsp" />
     <script>
         function myFunction() {
             document.getElementById("demo").innerHTML = "Paragraph changed.";
