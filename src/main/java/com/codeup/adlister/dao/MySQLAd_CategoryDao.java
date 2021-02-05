@@ -1,10 +1,11 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
-import com.codeup.adlister.models.Category;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
+import java.util.HashMap;
+import java.util.List;
 
 public class MySQLAd_CategoryDao implements Ad_Categories{
     private Connection connection;
@@ -35,5 +36,21 @@ public class MySQLAd_CategoryDao implements Ad_Categories{
             throw new RuntimeException("Error creating new ad_category", e);
         }
     }
-
+    public HashMap<Ad, Object> addCategoriesToListAll(List<Ad> adList){
+        HashMap<Ad, Object> newAdMap = new HashMap<>();
+        for (Ad ad : adList) {
+            try {
+                PreparedStatement stmt = null;
+                stmt = connection.prepareStatement("SELECT JSON_ARRAYAGG(name) FROM ad_category JOIN categories ON categories.id = ad_category.category_id JOIN ads ON ads.id = ad_category.ad_id WHERE ads.id = ?");
+                stmt.setLong(1, ad.getId());
+                ResultSet rs = stmt.executeQuery();
+                rs.first();
+                System.out.println(rs.getObject(1));
+                newAdMap.put(ad, rs.getObject(1));
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return newAdMap;
+    }
 }
