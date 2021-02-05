@@ -10,9 +10,21 @@
     <jsp:include page="/WEB-INF/partials/UserNavbar.jsp" />
 
     <div class="container">
-        <h1>Welcome, ${sessionScope.user.username}!</h1>
+        <h1 style="text-align: center">Welcome, ${sessionScope.user.username}!</h1>
     </div>
+    <container style="justify-content: center" class="container-fluid d-flex flex-wrap: wrap">
+        <form class="pre-edit-form text-center">
+            <div class="mb-3">
+                <label class="form-label">Email address</label>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Edit Profile</button>
+        </form>
+    </container>
     <container class="container-fluid d-flex flex-wrap: wrap">
+        <h4>Your personal ads</h4>
         <div class="row row-cols-3 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
             <c:forEach var="ad" items="${ads}">
                 <div class="col-lg-4">
@@ -30,5 +42,7 @@
             </c:forEach>
         </div>
     </container>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/profile.js"></script>
 </body>
 </html>
