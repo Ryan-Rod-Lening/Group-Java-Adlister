@@ -20,7 +20,7 @@
         <div class="col-xs-offset-4 col-xs-4">
             <h1 class="text-center">Search Page</h1>
             <div class="text-center">
-                <form action="/search" method="get" class="center-text center-block">
+                <form action="/ads/search" method="get"  class="center-text center-block">
                     <label for="search">Title: <input type="text" name="searchbar" id="search"></label><br>
                     <button>Submit</button>
                 </form>
