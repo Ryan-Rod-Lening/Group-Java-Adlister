@@ -29,7 +29,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container-fluid d-flex flex-wrap" >
     <hr>
     <c:forEach var="ad" items="${search}">
         <div class="card col-sm-6 col-md-4 col-lg-3" style="height: 24rem;">
@@ -37,8 +37,8 @@
             <div class="card-body" style="border: 1px solid black">
                 <h5 class="card-title">${ad.title}</h5>
                 <p class="card-text">${ad.description}</p>
-                <a href="/ads/single?ad-id=${ad.id}" class="text-center center-block">View Full Ad</a>
             </div>
+            <a href="/ads/single?ad-id=${ad.id}" class="text-center center-block">View Full Ad</a>
         </div>
     </c:forEach>
 </div>

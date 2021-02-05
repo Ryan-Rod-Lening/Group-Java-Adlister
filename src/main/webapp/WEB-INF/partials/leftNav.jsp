@@ -14,5 +14,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="#" tabindex="-1">Events</a>
             </li>
+            <li>
+                <a href="/ads" class="nav-link" tabindex="-1">View All Ads -></a>
+            </li>
         </ul>
+
     </container>

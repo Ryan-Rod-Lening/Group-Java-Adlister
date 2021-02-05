@@ -22,8 +22,8 @@
             </li>
             </ul>
         <form action="/ads/search" method="get"  class="form-inline my-2 my-lg-0">
-            <label for="searchbar" name="searchbar"></label>
-            <input id="searchbar"  class="form-control mr-sm-2" type="search" placeholder="Search">
+            <label for="searchbar"></label>
+            <input id="searchbar" name="searchbar" class="form-control mr-sm-2" type="search" placeholder="Search">
             <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
