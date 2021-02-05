@@ -14,4 +14,5 @@ public interface Ads {
   
     Long getAdById(long userId, String string);
 
+    List<Ad>individualAd(String singleAd);
 }

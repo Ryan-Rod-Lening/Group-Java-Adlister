@@ -16,15 +16,15 @@
         <div class="row row-cols-3 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
             <c:forEach var="ad" items="${ads}">
                 <div class="col-lg-4">
-                    <div class="card h-50 w-100" style="width: 18rem;">
+                    <div class="card h-100 w-100" style="width: 18rem;">
                         <div class="card-body">
                             <h2>${ad.title}</h2>
                             <p class="card-text">${ad.description}</p>
                             <c:forEach var="adCategory" items="${adsCategory.get(ad)}">
                                 <p>${adCategory}</p>
                             </c:forEach>
-                            <a href="#" class="btn btn-primary">View Ad</a>
                         </div>
+                        <a href="/ads/single" class="btn btn-primary">View Ad</a>
                     </div>
                 </div>
             </c:forEach>

@@ -18,7 +18,7 @@
                 <a class="nav-link" href="/register">Register <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/login">Log In</a>
+                <a class="nav-link" href="/ads">view ads</a>
             </li>
             </ul>
         <form action="/ads/search" method="get"  class="form-inline my-2 my-lg-0">

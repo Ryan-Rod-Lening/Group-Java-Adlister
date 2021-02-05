@@ -23,6 +23,9 @@
             <li>
                 <a href="/ads/create" class="nav-link" tabindex="-1">Create an Ad</a>
             </li>
+            <li>
+                <a href="/profile" class="nav-link" tabindex="-1">profile</a>
+            </li>
         </ul>
         <form action="/ads/search" method="get"  class="form-inline my-2 my-lg-0">
             <label for="searchbar"></label>

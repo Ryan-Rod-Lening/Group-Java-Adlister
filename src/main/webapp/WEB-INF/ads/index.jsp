@@ -25,7 +25,7 @@
                     <p class="card-text">${ad.description}</p>
                     <c:forEach var="adCategory" items="${adsCategory.get(ad)}">
                         <p>${adCategory}</p>
-                    </c:forEach>
+                    </c:forEach>g
                 </div>
                 <a href="#" class="btn btn-primary">View Ad</a>
             </div>
