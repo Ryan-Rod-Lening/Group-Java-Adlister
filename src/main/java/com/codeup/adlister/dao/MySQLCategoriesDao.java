@@ -31,13 +31,10 @@ public class MySQLCategoriesDao implements Categories {
             while(rs.next()) {
                 System.out.println(rs.getString(1));
                 System.out.println(rs.getString(2));
-//                System.out.println(rs.getString(2));
-                // do something with the search results
                 return new Category(
                         rs.getInt(1),
                         rs.getString(2)
                 );
-//                return (Category) rs.getObject(1);
             }
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving all ads.", e);
@@ -45,23 +42,5 @@ public class MySQLCategoriesDao implements Categories {
         return null;
     }
 
-    @Override
-    public void matchParamToId(String category) {
 
-    }
-
-    public void insert(Category category){
-//        try {
-//            String insertQuery = "INSERT INTO ads(user_id, title, description) VALUES (?, ?, ?)";
-//            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
-//            stmt.setLong(1, ad.getUserId());
-//            stmt.setString(2, ad.getTitle());
-//            stmt.setString(3, ad.getDescription());
-//            stmt.executeUpdate();
-//            ResultSet rs = stmt.getGeneratedKeys();
-//            rs.next();
-//        } catch (SQLException e) {
-//            throw new RuntimeException("Error updating ad category.", e);
-//        }
-    }
 }
