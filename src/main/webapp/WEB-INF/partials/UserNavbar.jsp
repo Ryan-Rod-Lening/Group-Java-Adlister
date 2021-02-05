@@ -15,7 +15,10 @@
     <div class="collapse navbar-collapse" id="navbarToggleDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
-                <a class="nav-link" href="/logout" tabindex="-1" >Log out</a>
+                <a class="nav-link" href="/ads" tabindex="-1" >View Ads</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout" tabindex="-1" >Log Out</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -25,3 +28,4 @@
         </form>
     </div>
 </nav>
+<a href="/ads/create" class="btn btn-primary mt-5 mb-5">Create an Ad</a>

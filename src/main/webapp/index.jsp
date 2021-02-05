@@ -12,25 +12,9 @@
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
-        <h1>Welcome to the CHADLISTER!</h1>
+        <h1 class="text-center mt-4 mb-4">Welcome to Adlister!</h1>
     </div>
-<container class="d-flex">
-    <container class="float-left">
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" name="#" aria-current="page" href="#">Electronic</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" name="#" href="#">Animals</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" name="#" href="#">Food</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" tabindex="-1">Events</a>
-            </li>
-        </ul>
-    </container>
+    <jsp:include page="/WEB-INF/partials/leftNav.jsp" />
 <%--    title--%>
 
 <%--    cars for ads--%>
@@ -88,7 +72,8 @@
         </div>
        </div>
     </container>
-</container>
+    </container>
+    <a href="/ads" class="btn btn-primary mt-5 mb-5">View All Ads -></a>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
