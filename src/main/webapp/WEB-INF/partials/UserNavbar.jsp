@@ -20,6 +20,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/logout" tabindex="-1" >Log Out</a>
             </li>
+            <li>
+                <a href="/ads/create" class="nav-link" tabindex="-1">Create an Ad</a>
+            </li>
         </ul>
         <form action="/ads/search" method="get"  class="form-inline my-2 my-lg-0">
             <label for="searchbar"></label>
@@ -28,4 +31,4 @@
         </form>
     </div>
 </nav>
-<a href="/ads/create" class="btn btn-primary mt-5 mb-5">Create an Ad</a>
+
