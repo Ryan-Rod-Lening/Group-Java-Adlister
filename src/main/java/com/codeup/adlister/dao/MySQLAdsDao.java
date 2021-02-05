@@ -39,6 +39,18 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    public List<Ad> allUserAds(long userId) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ad_category JOIN ads ON ads.id = ad_category.ad_id JOIN categories ON ad_category.category_id = categories.id WHERE ads.user_id = ?");
+            stmt.setLong(1, userId);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all user's ads.", e);
+        }
+    }
+
     @Override
     public Long insert(Ad ad) {
         try {
