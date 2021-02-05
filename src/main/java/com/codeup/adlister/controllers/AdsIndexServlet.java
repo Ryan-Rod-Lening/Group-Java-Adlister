@@ -1,9 +1,6 @@
 package com.codeup.adlister.controllers;
 
-import com.codeup.adlister.dao.Ads;
 import com.codeup.adlister.dao.DaoFactory;
-import com.codeup.adlister.dao.ListAdsDao;
-import com.codeup.adlister.dao.MySQLAdsDao;
 import com.codeup.adlister.models.Ad;
 
 import javax.servlet.ServletException;
