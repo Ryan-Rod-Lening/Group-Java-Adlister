@@ -12,20 +12,20 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
-@WebServlet(name = "controllers.AdsIndexServlet", urlPatterns = "/ads")
-public class AdsIndexServlet extends HttpServlet {
+@WebServlet(name = "controllers.IndexServlet", urlPatterns = "")
+public class IndexServlet extends HttpServlet {
 
 
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Ad> allAdsWithoutCat = DaoFactory.getAdsDao().all();
         if (allAdsWithoutCat != null) {
-        HashMap<Ad, Object> allAdsWithCat = DaoFactory.getAd_CategoriesDao().addCategoriesToListAll(allAdsWithoutCat);
-        req.setAttribute("ads", allAdsWithoutCat);
-        req.setAttribute("adsCategory", allAdsWithCat);
-        System.out.println(allAdsWithCat);
+            HashMap<Ad, Object> allAdsWithCat = DaoFactory.getAd_CategoriesDao().addCategoriesToListAll(allAdsWithoutCat);
+            req.setAttribute("ads", allAdsWithoutCat);
+            req.setAttribute("adsCategory", allAdsWithCat);
+            System.out.println(allAdsWithCat);
         }
-        req.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/index.jsp").forward(req, resp);
 
     }
 }
