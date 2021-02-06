@@ -10,21 +10,29 @@
     <jsp:include page="/WEB-INF/partials/UserNavbar.jsp" />
 
     <div class="container">
-        <h1 style="text-align: center">Welcome, ${sessionScope.user.username}!</h1>
+        <h1 style="text-align: center" class="my-3">Welcome to your profile!</h1>
     </div>
+    <c:if test="${validationFail}">
+        <!-- Now I can access safely to "myAttribute" -->
+        <div class="validation-fail-div">
+            <p style="color:red;text-align: center;margin-bottom:5px"><b>${validationFailMsg}</b></p>
+            <p style="color:red;text-align: center;margin-bottom:0">${userValidation}</p>
+            <p style="color:red;text-align: center">${emailValidation}</p>
+        </div>
+    </c:if>
     <container style="justify-content: center" class="container-fluid d-flex flex-wrap: wrap">
         <form class="pre-edit-form text-center">
-            <div class="mb-3">
-                <label class="form-label">Email address</label>
+            <div>
+                <b>Username: </b><label id="username-value" class="form-label">${sessionScope.user.username}</label>
             </div>
             <div class="mb-3">
-                <label class="form-label">Password</label>
+                <b>Email address: </b><label id="email-value" class="form-label">${sessionScope.user.email}</label>
             </div>
             <button type="submit" class="btn btn-primary">Edit Profile</button>
         </form>
     </container>
+    <h4 class="mt-2 mb-4" style="text-align: center">Your personal ads</h4>
     <container class="container-fluid d-flex flex-wrap: wrap">
-        <h4>Your personal ads</h4>
         <div class="row row-cols-3 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
             <c:forEach var="ad" items="${ads}">
                 <div class="col-lg-4">
