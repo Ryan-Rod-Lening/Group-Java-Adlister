@@ -28,7 +28,7 @@ public class MySQLAdsDao implements Ads {
         try {
             stmt = connection.prepareStatement("SELECT ad_category.ad_id, ad_category.category_id, ads.id, ads.user_id, ads.title, ads.description, categories.id, GROUP_CONCAT(categories.name) as 'categories.name' FROM ad_category JOIN categories ON categories.id = ad_category.category_id JOIN ads ON ads.id = ad_category.ad_id GROUP BY ads.id;");
             ResultSet rs = stmt.executeQuery();
-            return createAdsFromResults(rs);
+            return createConcatAdsFromResults(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving all ads.", e);
         }
@@ -40,7 +40,7 @@ public class MySQLAdsDao implements Ads {
             stmt = connection.prepareStatement("SELECT ad_category.ad_id, ad_category.category_id, ads.id, ads.user_id, ads.title, ads.description, categories.id, GROUP_CONCAT(categories.name) as 'categories.name' FROM ad_category JOIN categories ON categories.id = ad_category.category_id JOIN ads ON ads.id = ad_category.ad_id WHERE ads.user_id = ? GROUP BY ads.id;");
             stmt.setLong(1, userId);
             ResultSet rs = stmt.executeQuery();
-            return createAdsFromResults(rs);
+            return createConcatAdsFromResults(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving all user's ads.", e);
         }
@@ -80,19 +80,38 @@ public class MySQLAdsDao implements Ads {
     }
 
     private Ad extractAd(ResultSet rs) throws SQLException {
+
         return new Ad(
-            rs.getLong("ads.id"),
-            rs.getLong("ads.user_id"),
-            rs.getString("ads.title"),
-            rs.getString("ads.description"),
-            rs.getString("categories.name")
+                rs.getLong("ads.id"),
+                rs.getLong("ads.user_id"),
+                rs.getString("ads.title"),
+                rs.getString("ads.description")
         );
     }
+
+    private Ad extractAdConcat(ResultSet rs) throws SQLException {
+            return new Ad(
+                rs.getLong("ads.id"),
+                rs.getLong("ads.user_id"),
+                rs.getString("ads.title"),
+                rs.getString("ads.description"),
+                rs.getString("categories.name")
+            );
+        }
+
 
     private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
         List<Ad> ads = new ArrayList<>();
         while (rs.next()) {
             ads.add(extractAd(rs));
+        }
+        return ads;
+    }
+
+    private List<Ad> createConcatAdsFromResults(ResultSet rs) throws SQLException {
+        List<Ad> ads = new ArrayList<>();
+        while (rs.next()) {
+            ads.add(extractAdConcat(rs));
         }
         return ads;
     }
