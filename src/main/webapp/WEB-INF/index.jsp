@@ -18,7 +18,7 @@
 <%--    title--%>
 
 <%--    cars for ads--%>
-    <container class="container-fluid d-flex flex-wrap: wrap">
+    <container class="container-fluid">
         <div class="row row-cols-3 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
             <c:forEach var="ad" items="${ads}">
                 <div class="col-lg-4">
@@ -37,48 +37,6 @@
             </c:forEach>
         </div>
     </container>
-<%--        <div class="col">--%>
-<%--            <div class="card h-100 w-100" style="width: 18rem;">--%>
-<%--                <img src="..." class="card-img-top" alt="...">--%>
-<%--                <div class="card-body">--%>
-<%--                    <h5 class="card-title">Card title</h5>--%>
-<%--                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>--%>
-<%--                    <a href="#" class="btn btn-primary">Go somewhere</a>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="col">--%>
-<%--            <div class="card h-100 w-100" style="width: 18rem;">--%>
-<%--                <img src="..." class="card-img-top" alt="...">--%>
-<%--                <div class="card-body">--%>
-<%--                    <h5 class="card-title">Card title</h5>--%>
-<%--                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>--%>
-<%--                    <a href="#" class="btn btn-primary">Go somewhere</a>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="col">--%>
-<%--            <div class="card h-100 w-100" style="width: 18rem;">--%>
-<%--                <img src="..." class="card-img-top" alt="...">--%>
-<%--                <div class="card-body">--%>
-<%--                    <h5 class="card-title">Card title</h5>--%>
-<%--                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>--%>
-<%--                    <a href="#" class="btn btn-primary">Go somewhere</a>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="col">--%>
-<%--            <div class="card h-100 w-100" style="width: 18rem;">--%>
-<%--                <img src="..." class="card-img-top" alt="...">--%>
-<%--                <div class="card-body">--%>
-<%--                    <h5 class="card-title">Card title</h5>--%>
-<%--                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>--%>
-<%--                    <a href="#" class="btn btn-primary">Go somewhere</a>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-
-
     </container>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

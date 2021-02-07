@@ -4,8 +4,8 @@ $('.pre-edit-form button').click(function(e) {
     $('.pre-edit-form').hide();
     $('.validation-fail-div').remove();
     $('.pre-edit-form').parent().append(
-        `<form ACTION="/profile" METHOD="POST" class="edit-form mt-2" style="border-style: groove; padding: 5px">
-            <h4 class="mb-3">Edit Profile</h4>
+        `<form ACTION="/profile" METHOD="POST" class="edit-form mt-2" style="border-style: groove; padding: 20px 20px 10px 20px">
+            <h4 class="mb-3 text-center">Edit Profile</h4>
              <div className="mb-3">
                 <label htmlFor="inputUsername" className="form-label"><b>Username</b></label>
                 <input style="float:right" name="inputUsername"type="text" className="form-control" id="inputUsername" value="${$('label#username-value')[0].innerHTML}">
@@ -28,4 +28,9 @@ $('body').on('click', '.cancel-edit', function(e) {
     $('.pre-edit-form').show();
 
 });
-})
+
+$('body').on('click', '.submit-edit-profile', function(e) {
+   e.preventDefault();
+});
+
+});
