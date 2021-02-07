@@ -16,21 +16,17 @@
 <body>
 <jsp:include page="/WEB-INF/partials/UserNavbar.jsp" />
 <h1 style="text-align: center">Viewing Add</h1>
-
-<div class="container-fluid d-flex flex-wrap" >
-        <hr>
+<div class="container">
+    <div class="row">
         <c:forEach var="ad" items="${single}">
-            <div class="card col-sm-6 col-md-4 col-lg-3" style="height: 24rem;">
-                    <%--<img class="card-img-top" src="..." alt="Card image cap">--%>
-                <div class="card-body" style="border: 1px solid black">
-                    <h5 class="card-title">${ad.title}</h5>
-                    <p class="card-text">${ad.description}</p>
-                </div>
+            <div class="col-md-4 col-md-offset-1 center-block">
+                <h2>${ad.title}</h2>
+                <p class="description">${ad.description}</p>
+
             </div>
+
         </c:forEach>
     </div>
 </div>
-
-
 </body>
 </html>

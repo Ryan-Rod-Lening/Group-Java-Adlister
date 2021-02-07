@@ -120,11 +120,11 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public List<Ad> individualAd(String singleAd) {
+        System.out.println("single ad = " + singleAd);
         PreparedStatement pst = null;
         try {
 
-            pst = connection.prepareStatement("SELECT * FROM ads where title LIKE CONCAT('%', ?, '%')");
-
+            pst = connection.prepareStatement("SELECT * FROM ads WHERE ads.id = ?");
             pst.setString(1, singleAd);
             ResultSet rs = pst.executeQuery();
             return createAdsFromResults(rs);

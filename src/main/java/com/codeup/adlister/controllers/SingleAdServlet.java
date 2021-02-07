@@ -22,8 +22,10 @@ public class SingleAdServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String singleAd = req.getParameter("viewbtn");
-        List<Ad> ads = DaoFactory.getAdsDao().individualAd(singleAd);
+              List<Ad> ads = DaoFactory.getAdsDao().individualAd(singleAd);
         req.setAttribute("single", ads);
         req.getRequestDispatcher("/WEB-INF/ads/singleAd.jsp").forward(req, resp);
     }
-}
+
+    }
+
