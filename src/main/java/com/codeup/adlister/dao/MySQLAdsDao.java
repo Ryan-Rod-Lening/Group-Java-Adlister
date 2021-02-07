@@ -26,7 +26,6 @@ public class MySQLAdsDao implements Ads {
     public List<Ad> all() {
         PreparedStatement stmt = null;
         try {
-//            stmt = connection.prepareStatement("SELECT * FROM ad_category JOIN ads ON ads.id = ad_category.ad_id JOIN categories ON ad_category.category_id = categories.id");
             stmt = connection.prepareStatement("SELECT ad_category.ad_id, ad_category.category_id, ads.id, ads.user_id, ads.title, ads.description, categories.id, GROUP_CONCAT(categories.name) as 'categories.name' FROM ad_category JOIN categories ON categories.id = ad_category.category_id JOIN ads ON ads.id = ad_category.ad_id GROUP BY ads.id;");
             ResultSet rs = stmt.executeQuery();
             return createAdsFromResults(rs);
@@ -38,7 +37,6 @@ public class MySQLAdsDao implements Ads {
     public List<Ad> allUserAds(long userId) {
         PreparedStatement stmt = null;
         try {
-//            stmt = connection.prepareStatement("SELECT * FROM ad_category JOIN ads ON ads.id = ad_category.ad_id JOIN categories ON ad_category.category_id = categories.id WHERE ads.user_id = ?");
             stmt = connection.prepareStatement("SELECT ad_category.ad_id, ad_category.category_id, ads.id, ads.user_id, ads.title, ads.description, categories.id, GROUP_CONCAT(categories.name) as 'categories.name' FROM ad_category JOIN categories ON categories.id = ad_category.category_id JOIN ads ON ads.id = ad_category.ad_id WHERE ads.user_id = ? GROUP BY ads.id;");
             stmt.setLong(1, userId);
             ResultSet rs = stmt.executeQuery();

@@ -2,7 +2,6 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
-
 import java.sql.*;
 import java.util.HashMap;
 import java.util.List;
@@ -45,7 +44,6 @@ public class MySQLAd_CategoryDao implements Ad_Categories{
                 stmt.setLong(1, ad.getId());
                 ResultSet rs = stmt.executeQuery();
                 rs.first();
-                System.out.println(rs.getObject(1));
                 newAdMap.put(ad, rs.getObject(1));
             } catch (SQLException throwables) {
                 throwables.printStackTrace();

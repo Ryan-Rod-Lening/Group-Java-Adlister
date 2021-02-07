@@ -13,7 +13,6 @@
         <h1 style="text-align: center" class="my-3">Welcome to your profile!</h1>
     </div>
     <c:if test="${validationFail}">
-        <!-- Now I can access safely to "myAttribute" -->
         <div class="validation-fail-div">
             <p style="color:red;text-align: center;margin-bottom:5px"><b>${validationFailMsg}</b></p>
             <p style="color:red;text-align: center;margin-bottom:0">${userValidation}</p>
@@ -32,13 +31,13 @@
         </form>
     </container>
     <h4 class="mt-2 mb-4" style="text-align: center">Your personal ads</h4>
-    <container class="container-fluid d-flex flex-wrap: wrap">
+    <container class="container-fluid">
         <div class="row row-cols-3 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
             <c:forEach var="ad" items="${ads}">
                 <div class="col-lg-4">
-                    <div class="card h-50 w-100" style="width: 18rem;">
+                    <div class="card h-100 w-100" style="width: 18rem;">
                         <div class="card-body">
-                            <h2>${ad.title}</h2>
+                            <h5><u>${ad.title}</u></h5>
                             <p class="card-text">${ad.description}</p>
                             <c:forEach var="adCategory" items="${adsCategory.get(ad)}">
                                 <p>${adCategory}</p>
