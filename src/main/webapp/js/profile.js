@@ -4,7 +4,7 @@ $('.pre-edit-form button').click(function(e) {
     $('.pre-edit-form').hide();
     $('.validation-fail-div').remove();
     $('.pre-edit-form').parent().append(
-        `<form ACTION="/profile" METHOD="POST" class="edit-form mt-2" style="border-style: groove; padding: 5px">
+        `<form ACTION="/profile" METHOD="POST" class="edit-form mt-2" style="border-style: groove; padding: 20px 20px 10px 20px">
             <h4 class="mb-3">Edit Profile</h4>
              <div className="mb-3">
                 <label htmlFor="inputUsername" className="form-label"><b>Username</b></label>

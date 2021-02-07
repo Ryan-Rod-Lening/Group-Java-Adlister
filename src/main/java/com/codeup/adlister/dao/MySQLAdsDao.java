@@ -1,12 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
-import com.codeup.adlister.models.Category;
 import com.mysql.cj.jdbc.Driver;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +26,8 @@ public class MySQLAdsDao implements Ads {
     public List<Ad> all() {
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM ad_category JOIN ads ON ads.id = ad_category.ad_id JOIN categories ON ad_category.category_id = categories.id");
+//            stmt = connection.prepareStatement("SELECT * FROM ad_category JOIN ads ON ads.id = ad_category.ad_id JOIN categories ON ad_category.category_id = categories.id");
+            stmt = connection.prepareStatement("SELECT ad_category.ad_id, ad_category.category_id, ads.id, ads.user_id, ads.title, ads.description, categories.id, GROUP_CONCAT(categories.name) as 'categories.name' FROM ad_category JOIN categories ON categories.id = ad_category.category_id JOIN ads ON ads.id = ad_category.ad_id GROUP BY ads.id;");
             ResultSet rs = stmt.executeQuery();
             return createAdsFromResults(rs);
         } catch (SQLException e) {
@@ -42,7 +38,8 @@ public class MySQLAdsDao implements Ads {
     public List<Ad> allUserAds(long userId) {
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM ad_category JOIN ads ON ads.id = ad_category.ad_id JOIN categories ON ad_category.category_id = categories.id WHERE ads.user_id = ?");
+//            stmt = connection.prepareStatement("SELECT * FROM ad_category JOIN ads ON ads.id = ad_category.ad_id JOIN categories ON ad_category.category_id = categories.id WHERE ads.user_id = ?");
+            stmt = connection.prepareStatement("SELECT ad_category.ad_id, ad_category.category_id, ads.id, ads.user_id, ads.title, ads.description, categories.id, GROUP_CONCAT(categories.name) as 'categories.name' FROM ad_category JOIN categories ON categories.id = ad_category.category_id JOIN ads ON ads.id = ad_category.ad_id WHERE ads.user_id = ? GROUP BY ads.id;");
             stmt.setLong(1, userId);
             ResultSet rs = stmt.executeQuery();
             return createAdsFromResults(rs);
@@ -76,7 +73,6 @@ public class MySQLAdsDao implements Ads {
             stmt.setLong(2, userId);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()) {
-                System.out.println(rs);
                 return rs.getLong(1);
             }
         } catch (SQLException e) {
@@ -87,10 +83,11 @@ public class MySQLAdsDao implements Ads {
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
-            rs.getLong("id"),
-            rs.getLong("user_id"),
-            rs.getString("title"),
-            rs.getString("description")
+            rs.getLong("ads.id"),
+            rs.getLong("ads.user_id"),
+            rs.getString("ads.title"),
+            rs.getString("ads.description"),
+            rs.getString("categories.name")
         );
     }
 
@@ -104,11 +101,8 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public List<Ad> SearchedAd(String userInput) {
-        System.out.println("userInput = " + userInput);
         PreparedStatement stmt = null;
-
         try {
-
             stmt = connection.prepareStatement("SELECT * FROM ads where title LIKE CONCAT('%', ?, '%')");
             stmt.setString(1,userInput);
             ResultSet rs = stmt.executeQuery();
@@ -117,5 +111,4 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error retrieving matching ads.", e);
         }
     }
-//"SELECT *   FROM ads  WHERE ads.title LIKE  ? "
 }
