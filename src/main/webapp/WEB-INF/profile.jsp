@@ -7,7 +7,7 @@
     </jsp:include>
 </head>
 <body>
-    <jsp:include page="/WEB-INF/partials/UserNavbar.jsp" />
+    <jsp:include page="/WEB-INF/partials/profileNavbar.jsp" />
 
     <div class="container">
         <h1 style="text-align: center" class="my-3">Welcome to your profile!</h1>
@@ -43,7 +43,8 @@
                                 <p>${adCategory}</p>
                             </c:forEach>
                         </div>
-                        <a href="/ads/single" class="btn btn-primary">View Ad</a>
+
+                        <a href="/ads/single"  class="btn btn-primary w-50">View Ad</a>
                     </div>
                 </div>
             </c:forEach>

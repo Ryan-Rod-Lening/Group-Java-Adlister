@@ -120,7 +120,7 @@ public class MySQLAdsDao implements Ads {
     public List<Ad> SearchedAd(String userInput) {
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM ads where title LIKE CONCAT('%', ?, '%')");
+            stmt = connection.prepareStatement("SELECT * FROM ads where title  LIKE CONCAT('%', ?, '%')");
             stmt.setString(1,userInput);
             ResultSet rs = stmt.executeQuery();
             return createAdsFromResults(rs);
@@ -144,5 +144,7 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error retrieving specific add", e);
         }
     }
+
+
 
 }
