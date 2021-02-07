@@ -30,17 +30,17 @@ public class ViewProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String inputUsername = req.getParameter("inputUsername");
         String inputEmail = req.getParameter("inputEmail");
-
+        User getUserSession = (User) req.getSession().getAttribute("user");
         User user1 = DaoFactory.getUsersDao().findByUsername(inputUsername);
         User user2 = DaoFactory.getUsersDao().findByEmail(inputEmail);
-        if (user1 != null || user2 != null) {
+        if ((user1 != null && !getUserSession.getUsername().equalsIgnoreCase(inputUsername)) || user2 != null && !getUserSession.getEmail().equalsIgnoreCase(inputEmail)) {
             req.setAttribute("validationFail", true);
             String validationFailMessage = "There was an error trying to save your profile changes:";
             req.setAttribute("validationFailMsg", validationFailMessage);
-            if (user1 != null) {
+            if (user1 != null && !getUserSession.getUsername().equalsIgnoreCase(inputUsername)) {
                 String usernameValidationFail = "-That username is already taken-";
                 req.setAttribute("userValidation", usernameValidationFail);
-            } if (user2 !=null) {
+            } if (user2 !=null && !getUserSession.getEmail().equalsIgnoreCase(inputEmail)) {
                 String emailValidationFail = "-That email address is already taken-";
                 req.setAttribute("emailValidation", emailValidationFail);
             }
@@ -50,7 +50,11 @@ public class ViewProfileServlet extends HttpServlet {
             req.setAttribute("adsCategory", allAdsWithCat);
             req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req, resp);
         } else {
-            resp.sendRedirect("/ads");
+            User userUpdateInfo = new User(getUserSession.getId(), inputUsername, inputEmail);
+            DaoFactory.getUsersDao().updateUser(userUpdateInfo);
+            User updatedUser = DaoFactory.getUsersDao().findByUsername(userUpdateInfo.getUsername());
+            req.getSession().setAttribute("user", updatedUser);
+            resp.sendRedirect("/profile");
         }
     }
 }
