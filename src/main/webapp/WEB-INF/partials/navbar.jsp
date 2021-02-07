@@ -12,28 +12,29 @@
 <%--    </div><!-- /.navbar-collapse -->--%>
 <%--    </div><!-- /.container-fluid -->--%>
 <%--</nav>--%>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand">About Adlister</a>
-    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarToggleDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggle-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarToggleDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="/register">Register <span class="sr-only">(current)</span></a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Adlister</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 m-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/register" tabindex="-1">Register</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/login">Log In</a>
+                <a class="nav-link" href="/login" tabindex="-1">Log In</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/ads/create" tabindex="-1" >create ad</a>
+                <a class="nav-link" href="/ads/create" tabindex="-1">Create Ad</a>
             </li>
         </ul>
-        <form action="/ads/search" method="get"  class="form-inline my-2 my-lg-0">
+        <form action="/ads/search" method="get"  class="form-inline my-2 my-lg-0 justify-content: right">
             <label for="searchbar"></label>
             <input id="searchbar" name="searchbar" class="form-control mr-sm-2" type="search" placeholder="Search">
             <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
+    </div>
     </div>
 </nav>

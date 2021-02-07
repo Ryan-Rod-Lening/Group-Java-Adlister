@@ -14,7 +14,7 @@
     </jsp:include>
 </head>
 <body>
-<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<jsp:include page="/WEB-INF/partials/UserNavbar.jsp" />
 <div class="container-fluid">
     <div class="row" style="background-color: #E6F0E8">
         <div class="col-xs-offset-4 col-xs-4">
