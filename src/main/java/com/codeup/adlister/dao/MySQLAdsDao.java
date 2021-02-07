@@ -128,4 +128,21 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error retrieving matching ads.", e);
         }
     }
+
+
+    @Override
+    public List<Ad> individualAd(String singleAd) {
+        System.out.println("single ad = " + singleAd);
+        PreparedStatement pst = null;
+        try {
+
+            pst = connection.prepareStatement("SELECT * FROM ads WHERE ads.id = ?");
+            pst.setString(1, singleAd);
+            ResultSet rs = pst.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving specific add", e);
+        }
+    }
+
 }

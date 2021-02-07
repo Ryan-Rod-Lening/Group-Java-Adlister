@@ -42,8 +42,8 @@
                             <c:forEach var="adCategory" items="${adsCategory.get(ad)}">
                                 <p>${adCategory}</p>
                             </c:forEach>
-                            <a href="#" class="btn btn-primary">View Ad</a>
                         </div>
+                        <a href="/ads/single" class="btn btn-primary">View Ad</a>
                     </div>
                 </div>
             </c:forEach>

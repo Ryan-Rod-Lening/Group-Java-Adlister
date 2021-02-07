@@ -38,7 +38,7 @@
                 <h5 class="card-title">${ad.title}</h5>
                 <p class="card-text">${ad.description}</p>
             </div>
-            <a href="/ads/single?ad-id=${ad.id}" class="text-center center-block">View Full Ad</a>
+            <a href="/ads/single?ad-id=${ad.title}" name="viewbtn" class="text-center center-block">View Full Ad</a>
         </div>
     </c:forEach>
 </div>

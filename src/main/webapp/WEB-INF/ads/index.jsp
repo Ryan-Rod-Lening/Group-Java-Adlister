@@ -25,9 +25,9 @@
                     <p class="card-text">${ad.description}</p>
                     <c:forEach var="adCategory" items="${adsCategory.get(ad)}">
                         <p>${adCategory}</p>
-                    </c:forEach>
+                    </c:forEach>g
                 </div>
-                <a href="#" class="btn btn-primary">View Ad</a>
+                <a href="/ads/single?ad-id=${ad.id}" name="viewbtn" class="btn btn-primary">View Ad</a>
             </div>
         </div>
     </c:forEach>
