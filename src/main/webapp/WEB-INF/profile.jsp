@@ -31,7 +31,7 @@
         </form>
     </container>
     <h4 class="mt-2 mb-4" style="text-align: center">Your personal ads</h4>
-    <container class="container-fluid">
+    <div class="container-fluid">
         <div class="row row-cols-3 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
             <c:forEach var="ad" items="${ads}">
                 <div class="col-lg-4">
@@ -44,12 +44,12 @@
                             </c:forEach>
                         </div>
 
-                        <a href="/ads/single"  class="btn btn-primary w-50">View Ad</a>
+                        <a href="/ads/single"  class="btn btn-primary w-100">View Ad</a>
                     </div>
                 </div>
             </c:forEach>
         </div>
-    </container>
+    </div>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/profile.js"></script>
 </body>

@@ -15,7 +15,7 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <jsp:include page="/WEB-INF/partials/leftNav.jsp" />
 
-<container class="container-fluid d-flex flex-wrap: wrap">
+<div class="container-fluid d-flex flex-wrap: wrap">
     <div class="row row-cols-3 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
     <c:forEach var="ad" items="${ads}">
         <div class="col-lg-4">
@@ -27,11 +27,11 @@
                         <p>${adCategory}</p>
                     </c:forEach>
                 </div>
-                <a href="/ads/single?ad-id=${ad.id}" name="viewbtn" class="btn btn-primary">View Ad</a>
+                <a href="/ads/single?ad-title=${ad.title}" name="viewbtn" class="btn btn-primary">View Ad</a>
             </div>
         </div>
     </c:forEach>
     </div>
-        </container>
+        </div>
 </body>
 </html>

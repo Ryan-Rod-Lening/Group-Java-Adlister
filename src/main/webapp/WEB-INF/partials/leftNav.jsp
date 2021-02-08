@@ -1,5 +1,5 @@
-<container class="d-flex leftNav">
-    <container class="float-left">
+<div class="d-flex leftNav">
+    <div class="float-left">
         <ul class="nav flex-column">
             <h5>CATEGORIES:</h5>
             <li class="nav-item">
@@ -19,5 +19,5 @@
             </li>
         </ul>
 
-    </container>
-</container>
+    </div>
+</div>

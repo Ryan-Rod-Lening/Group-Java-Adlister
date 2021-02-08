@@ -14,7 +14,7 @@ public interface Ads {
 
     List<Ad> SearchedAd(String userInput);
 
-
+    List<Ad>CategorySearch(String userInput);
 
     List<Ad>individualAd(String singleAd);
 }
