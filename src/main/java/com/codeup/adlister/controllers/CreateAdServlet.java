@@ -4,6 +4,7 @@ import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.Category;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.util.validate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,6 +34,17 @@ public class CreateAdServlet extends HttpServlet {
             request.getParameter("description")
         );
 
+        validate validate = new validate();
+        boolean validAttempt = validate.authenticate(ad.getTitle(),ad.getDescription(),ad.getCategory(),request);
+        if (validAttempt) {
+            validate.clearAttributes(request);
+            request.getSession().setAttribute("user", user);
+
+            response.sendRedirect("/ads");
+        } else {
+            response.sendRedirect("/create");
+        }
+
         DaoFactory.getAdsDao().insert(ad);
         Long searchedAd = DaoFactory.getAdsDao().getAdById(user.getId(), request.getParameter("title"));
 
@@ -41,5 +53,6 @@ public class CreateAdServlet extends HttpServlet {
             DaoFactory.getAd_CategoriesDao().insertAdCategory(searchedAd, cat.getId());
         }
         response.sendRedirect("/ads");
+
     }
 }
