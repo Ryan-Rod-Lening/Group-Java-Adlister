@@ -21,4 +21,6 @@ public interface Ads {
     List<Ad>individualAd(String singleAd);
 
     void deleteAd(Ad ad);
+
+    void editAd(Ad ad);
 }

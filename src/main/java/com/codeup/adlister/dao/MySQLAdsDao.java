@@ -192,5 +192,17 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    public void editAd(Ad ad) {
+        String query = "UPDATE ads SET title = ?, description = ? WHERE id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, ad.getTitle());
+            stmt.setString(2, ad.getDescription());
+            stmt.setLong(3, ad.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating existing user", e);
+        }
+    }
 
 }
