@@ -17,4 +17,6 @@ public interface Ads {
     List<Ad>CategorySearch(String userInput);
 
     List<Ad>individualAd(String singleAd);
+
+    void deleteAd(Ad ad);
 }

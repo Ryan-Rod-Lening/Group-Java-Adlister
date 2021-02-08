@@ -159,6 +159,18 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    @Override
+    public void deleteAd(Ad ad) {
+        String query = "UPDATE ads SET active = ? WHERE id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setByte(1, (byte) 0);
+            stmt.setLong(2, ad.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating existing user", e);
+        }
+    }
 
 
 }

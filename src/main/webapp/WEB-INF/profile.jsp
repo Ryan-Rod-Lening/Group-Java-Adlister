@@ -43,16 +43,11 @@
                                 <p>${adCategory}</p>
                             </c:forEach>
                         </div>
-<<<<<<< HEAD
                         <div class="pb-3 d-flex">
-                            <a href="/ads/single"  class="btn btn-success w-50 mx-auto">View Ad</a>
-                            <button id="edit-movie-btn" class="btn btn-primary p-2 mr-2">Edit</button>
-                            <button id="delete-movie-btn" class="btn btn-danger p-2 mr-2">Delete</button>
+                            <a id="hrefAd" href="/ads/single?id=${ad.id}"  class="btn btn-success w-50 mx-auto">View Ad</a>
+                            <button id="edit-ad-btn" class="btn btn-primary p-2 mr-2">Edit</button>
+                            <button id="delete-ad-btn" class="btn btn-danger p-2 mr-2">Delete</button>
                         </div>
-=======
-
-                        <a href="/ads/single"  class="btn btn-primary w-100">View Ad</a>
->>>>>>> ee20a99c8af93e8fb03fab7b5b84e89d6da7e3b9
                     </div>
                 </div>
             </c:forEach>
