@@ -1,11 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: macowner
-  Date: 2/5/21
-  Time: 3:56 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,18 +8,21 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/UserNavbar.jsp" />
-<h1 style="text-align: center">Viewing Add</h1>
+<h1 style="text-align: center">Viewing Ad</h1>
 <div class="container">
     <div class="row">
-        <c:forEach var="ad" items="${single}">
-            <div class="col-md-4 col-md-offset-1 center-block">
-                <h2>${ad.title}</h2>
-                <p class="description">${ad.description}</p>
-
-            </div>
-
-        </c:forEach>
+<c:forEach var="ad" items="${ads}">
+    <div class="col-lg-12">
+    <div class="card h-100 w-100" style="width: 18rem;">
+    <div class="card-body">
+    <h5 class="text-center"><u>${ad.title}</u></h5>
+    <p class="card-text text-center">${ad.description}</p>
+    <c:forEach var="adCategory" items="${adsCategory.get(ad)}">
+        <p class="text-center">${adCategory}</p>
+    </c:forEach>
     </div>
-</div>
+    </div>
+    </div>
+    </c:forEach>
 </body>
 </html>

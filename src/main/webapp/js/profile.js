@@ -68,7 +68,5 @@ $('body').on('click', '.submit-edit-profile', function(e) {
     $('body').on('click', '#delete-movie-cancel', function(e) {
         e.preventDefault();
     });
-    // $(window).on('click', '#confirm-delete-form', function(e) {
-    //     $(this).unbind('submit').submit();
-    // })
+
 });

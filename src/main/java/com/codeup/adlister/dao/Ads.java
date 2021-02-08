@@ -12,6 +12,8 @@ public interface Ads {
     Long insert(Ad ad);
     Long getAdById(long userId, String string);
 
+    List<Ad> getAdById(long adId);
+
     List<Ad> SearchedAd(String userInput);
 
     List<Ad>CategorySearch(String userInput);

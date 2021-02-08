@@ -79,6 +79,20 @@ public class MySQLAdsDao implements Ads {
         return null;
     }
 
+    public List<Ad> getAdById(long adId) {
+        try {
+            PreparedStatement stmt = null;
+            stmt = connection.prepareStatement("SELECT ad_category.ad_id, ad_category.category_id, ads.id, ads.user_id, ads.title, ads.description, categories.id, GROUP_CONCAT(categories.name) as 'categories.name' FROM ad_category JOIN categories ON categories.id = ad_category.category_id JOIN ads ON ads.id = ad_category.ad_id WHERE ads.id = ? AND active = 1 GROUP BY ads.id;");
+            stmt.setLong(1, adId);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()) {
+                return createConcatSingleAdFromResults(rs);            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+        return null;
+    }
+
     private Ad extractAd(ResultSet rs) throws SQLException {
 
         return new Ad(
@@ -113,6 +127,12 @@ public class MySQLAdsDao implements Ads {
         while (rs.next()) {
             ads.add(extractAdConcat(rs));
         }
+        return ads;
+    }
+
+    private List<Ad> createConcatSingleAdFromResults(ResultSet rs) throws SQLException {
+        List<Ad> ads = new ArrayList<>();
+            ads.add(extractAdConcat(rs));
         return ads;
     }
 
