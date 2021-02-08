@@ -8,7 +8,7 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/profileNavbar.jsp" />
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/profile.css">
     <div class="container">
         <h1 style="text-align: center" class="my-3">Welcome to your profile!</h1>
     </div>
@@ -43,8 +43,11 @@
                                 <p>${adCategory}</p>
                             </c:forEach>
                         </div>
-
-                        <a href="/ads/single"  class="btn btn-primary w-50">View Ad</a>
+                        <div class="pb-3 d-flex">
+                            <a href="/ads/single"  class="btn btn-success w-50 mx-auto">View Ad</a>
+                            <button id="edit-movie-btn" class="btn btn-primary p-2 mr-2">Edit</button>
+                            <button id="delete-movie-btn" class="btn btn-danger p-2 mr-2">Delete</button>
+                        </div>
                     </div>
                 </div>
             </c:forEach>
