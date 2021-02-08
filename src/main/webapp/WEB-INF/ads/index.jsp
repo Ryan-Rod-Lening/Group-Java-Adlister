@@ -31,7 +31,7 @@
                         <p>${adCategory}</p>
                     </c:forEach>
                 </div>
-                <a href="/ads/single?ad-title=${ad.title}" name="viewbtn" class="btn btn-primary">View Ad</a>
+                <a href="/ads/singleAd?ad-title=${ad.title}" name="viewbtn" class="btn btn-primary">View Ad</a>
             </div>
         </div>
     </c:forEach>

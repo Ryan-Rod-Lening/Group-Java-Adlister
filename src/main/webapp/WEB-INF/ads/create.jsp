@@ -12,6 +12,11 @@
             document.getElementById("demo").innerHTML = "Paragraph changed.";
         }
     </script>
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+    </style>
 </head>
 <body>
     ${title_error}

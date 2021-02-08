@@ -12,12 +12,17 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Search Page" />
     </jsp:include>
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/UserNavbar.jsp" />
 <div class="container-fluid">
     <div class="row" style="background-color: #E6F0E8">
-        <div class="col-xs-offset-4 col-xs-4">
+        <div class="col-xs-offset-4 col-xs-4 m-auto">
             <h1 class="text-center">Search Page</h1>
         </div>
     </div>
@@ -31,6 +36,9 @@
             <div class="card-body" style="border: 1px solid black">
                 <h5 class="card-title">${ad.title}</h5>
                 <p class="card-text">${ad.description}</p>
+                <c:forEach var="adCategory" items="${adsCategory.get(ad)}">
+                    <p>${adCategory}</p>
+                </c:forEach>
             </div>
             <a href="/ads/single?ad-title=${ad.title}" name="viewbtn" class="text-center center-block">View Full Ad</a>
         </div>

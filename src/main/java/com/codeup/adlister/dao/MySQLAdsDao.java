@@ -152,13 +152,13 @@ public class MySQLAdsDao implements Ads {
     public List<Ad>CategorySearch(String userInput){
         System.out.println(userInput);
         PreparedStatement stmt = null;
-
+//SELECT ads.title, ads.description, GROUP_CONCAT(categories.name) as 'categories.name' FROM ad_category JOIN categories ON categories.id = ad_category.category_id JOIN ads ON ads.id = ad_category.ad_id where ads.title LIKE CONCAT('%',?,'%') OR categories.name LIKE CONCAT('%',?,'%') OR ads.description LIKE CONCAT('%',?,'%')")
         try {
-            stmt = connection.prepareStatement("SELECT ads.title, ads.description, GROUP_CONCAT(categories.name) as 'categories.name' FROM ad_category JOIN categories ON categories.id = ad_category.category_id JOIN ads ON ads.id = ad_category.ad_id where ads.title LIKE CONCAT('%',?,'%') OR categories.name LIKE CONCAT('%',?,'%') OR ads.description LIKE CONCAT('%',?,'%')");
+            stmt = connection.prepareStatement("SELECT ads.title, ads.user_id,ads.id, ads.description, GROUP_CONCAT(categories.name) as 'categories.name' FROM ad_category JOIN categories ON categories.id = ad_category.category_id JOIN ads ON ads.id = ad_category.ad_id  WHERE ads.title LIKE CONCAT('%',?,'%') OR categories.name LIKE CONCAT('%',?,'%')");
             stmt.setString(1,userInput);
             ResultSet rs = stmt.executeQuery();
             System.out.println(rs);
-            return createAdsFromResults(rs);
+            return createConcatAdsFromResults(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving matching ads.", e);
         }

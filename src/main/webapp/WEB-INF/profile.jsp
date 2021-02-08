@@ -5,6 +5,11 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Your Profile" />
     </jsp:include>
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+    </style>
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/profileNavbar.jsp" />
@@ -19,7 +24,7 @@
             <p style="color:red;text-align: center">${emailValidation}</p>
         </div>
     </c:if>
-    <container style="justify-content: center" class="container-fluid d-flex flex-wrap: wrap">
+    <div style="justify-content: center" class="container-fluid d-flex flex-wrap: wrap">
         <form class="pre-edit-form text-center">
             <div>
                 <b>Username: </b><label id="username-value" class="form-label">${sessionScope.user.username}</label>
@@ -29,12 +34,12 @@
             </div>
             <button type="submit" class="btn btn-primary">Edit Profile</button>
         </form>
-    </container>
+    </div>
     <h4 class="mt-2 mb-4" style="text-align: center">Your personal ads</h4>
     <div class="container-fluid">
         <div class="row row-cols-3 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
             <c:forEach var="ad" items="${ads}">
-                <div class="col-lg-4">
+                <div class="col-lg-4 mb-10px">
                     <div class="card h-100 w-100" style="width: 18rem;">
                         <div class="card-body">
                             <h5><u>${ad.title}</u></h5>

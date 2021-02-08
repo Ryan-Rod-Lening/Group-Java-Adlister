@@ -5,6 +5,11 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Please Log In" />
     </jsp:include>
+    <style>
+        body {
+            background-color: whitesmoke;
+        }
+    </style>
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/LoginNavbar.jsp" />

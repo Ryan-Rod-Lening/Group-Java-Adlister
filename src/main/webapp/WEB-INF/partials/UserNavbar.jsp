@@ -24,7 +24,7 @@
                 <a href="/ads/create" class="nav-link" tabindex="-1">Create an Ad</a>
             </li>
             <li class="nav-item">
-                <a href="/profile" class="nav-link" tabindex="-1">profile</a>
+                <a href="/profile" class="nav-link" tabindex="-1">Profile</a>
             </li>
         </ul>
             <form action="/ads/search" method="get"  class="form-inline my-2 my-lg-0">
