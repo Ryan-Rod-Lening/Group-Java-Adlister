@@ -33,4 +33,40 @@ $('body').on('click', '.submit-edit-profile', function(e) {
    e.preventDefault();
 });
 
+    //OPEN DELETE MODAL HANDLER
+    $('body').on('click', '#delete-ad-btn', function (e){
+        //check to see if Modal exists before appending to prevent duplication
+        if (!$('#myModal').length) {
+            $(this).append(`<!-- The Modal -->
+            <form id="confirm-delete-form" ACTION="/profile" METHOD="POST">
+            <input type="hidden" value="${$(this).parent().children().attr('href').substring($(this).parent().children().attr('href').indexOf('=') +1)}" name="ad_id" />
+                <div id="myModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="close">&times;</span>
+                            <h2>Delete Ad</h2>
+                        </div>
+                        <div class="modal-body">
+                            <p style="color:black !important">Are you sure you want to delete this ad?</p>
+                            <input id="delete-movie-submit" type="submit" class="btn btn-primary" name="confirmDelete" value="confirm">Confirm</input>
+                            <button id="delete-movie-cancel" class="btn btn-danger">Cancel</button>
+                        </div>   
+                    </div>
+                </div></form>`)
+        }
+        $('#myModal').show();
+    })
+
+    //CLOSE DELETE MODAL HANDLER
+    $(window).on('click', function (e){
+        if(e.target === $('#myModal')[0] || e.target === $('#delete-movie-cancel')[0] || e.target === $('.close')[0]){
+            $('#myModal').hide();
+        }
+    })
+
+    $('body').on('click', '#delete-movie-cancel', function(e) {
+        e.preventDefault();
+    });
+
 });
