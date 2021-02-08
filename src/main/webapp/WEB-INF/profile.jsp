@@ -39,10 +39,17 @@
     <div class="container-fluid">
         <div class="row row-cols-3 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
             <c:forEach var="ad" items="${ads}">
+
                 <div class="col-lg-4 mb-10px">
+
+                <div class="col-lg-4 mb-10px">
+                    <form class="ad-edit-form">
+
                     <div class="card h-100 w-100" style="width: 18rem;">
                         <div class="card-body">
-                            <h5><u>${ad.title}</u></h5>
+                            <h5>
+                                <u>${ad.title}</u>
+                            </h5>
                             <p class="card-text">${ad.description}</p>
                             <c:forEach var="adCategory" items="${adsCategory.get(ad)}">
                                 <p>${adCategory}</p>
@@ -50,10 +57,11 @@
                         </div>
                         <div class="pb-3 d-flex">
                             <a id="hrefAd" href="/ads/single?id=${ad.id}"  class="btn btn-success w-50 mx-auto">View Ad</a>
-                            <button id="edit-ad-btn" class="btn btn-primary p-2 mr-2">Edit</button>
+                            <button type="submit" id="edit-ad-btn" class="btn btn-primary p-2 mr-2">Edit</button>
                             <button id="delete-ad-btn" class="btn btn-danger p-2 mr-2">Delete</button>
                         </div>
                     </div>
+                    </form>
                 </div>
             </c:forEach>
         </div>
