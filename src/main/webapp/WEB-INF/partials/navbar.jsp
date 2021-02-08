@@ -29,6 +29,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/ads/create" tabindex="-1">Create Ad</a>
             </li>
+            <li class="nav-item">
+                <a href="/profile" class="nav-link" tabindex="-1">profile</a>
+            </li>
         </ul>
         <form action="/ads/search" method="get"  class="form-inline my-2 my-lg-0 justify-content: right">
             <label for="searchbar"></label>

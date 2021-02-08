@@ -31,7 +31,7 @@
         </form>
     </container>
     <h4 class="mt-2 mb-4" style="text-align: center">Your personal ads</h4>
-    <container class="container-fluid">
+    <div class="container-fluid">
         <div class="row row-cols-3 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
             <c:forEach var="ad" items="${ads}">
                 <div class="col-lg-4">
@@ -43,16 +43,21 @@
                                 <p>${adCategory}</p>
                             </c:forEach>
                         </div>
+<<<<<<< HEAD
                         <div class="pb-3 d-flex">
                             <a href="/ads/single"  class="btn btn-success w-50 mx-auto">View Ad</a>
                             <button id="edit-movie-btn" class="btn btn-primary p-2 mr-2">Edit</button>
                             <button id="delete-movie-btn" class="btn btn-danger p-2 mr-2">Delete</button>
                         </div>
+=======
+
+                        <a href="/ads/single"  class="btn btn-primary w-100">View Ad</a>
+>>>>>>> ee20a99c8af93e8fb03fab7b5b84e89d6da7e3b9
                     </div>
                 </div>
             </c:forEach>
         </div>
-    </container>
+    </div>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/profile.js"></script>
 </body>
