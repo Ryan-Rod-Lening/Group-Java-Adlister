@@ -26,7 +26,7 @@ public class MySQLAdsDao implements Ads {
     public List<Ad> all() {
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT ad_category.ad_id, ad_category.category_id, ads.id, ads.user_id, ads.title, ads.description, categories.id, GROUP_CONCAT(categories.name) as 'categories.name' FROM ad_category JOIN categories ON categories.id = ad_category.category_id JOIN ads ON ads.id = ad_category.ad_id GROUP BY ads.id;");
+            stmt = connection.prepareStatement("SELECT ad_category.ad_id, ad_category.category_id, ads.id, ads.user_id, ads.title, ads.description, categories.id, GROUP_CONCAT(categories.name) as 'categories.name' FROM ad_category JOIN categories ON categories.id = ad_category.category_id JOIN ads ON ads.id = ad_category.ad_id AND active = 1 GROUP BY ads.id;");
             ResultSet rs = stmt.executeQuery();
             return createConcatAdsFromResults(rs);
         } catch (SQLException e) {
@@ -37,7 +37,7 @@ public class MySQLAdsDao implements Ads {
     public List<Ad> allUserAds(long userId) {
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT ad_category.ad_id, ad_category.category_id, ads.id, ads.user_id, ads.title, ads.description, categories.id, GROUP_CONCAT(categories.name) as 'categories.name' FROM ad_category JOIN categories ON categories.id = ad_category.category_id JOIN ads ON ads.id = ad_category.ad_id WHERE ads.user_id = ? GROUP BY ads.id;");
+            stmt = connection.prepareStatement("SELECT ad_category.ad_id, ad_category.category_id, ads.id, ads.user_id, ads.title, ads.description, categories.id, GROUP_CONCAT(categories.name) as 'categories.name' FROM ad_category JOIN categories ON categories.id = ad_category.category_id JOIN ads ON ads.id = ad_category.ad_id WHERE ads.user_id = ? AND active = 1 GROUP BY ads.id;");
             stmt.setLong(1, userId);
             ResultSet rs = stmt.executeQuery();
             return createConcatAdsFromResults(rs);
@@ -66,7 +66,7 @@ public class MySQLAdsDao implements Ads {
     public Long getAdById(long userId, String title) {
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT id FROM ads WHERE title = ? AND user_id = ?");
+            stmt = connection.prepareStatement("SELECT id FROM ads WHERE title = ? AND user_id = ? AND active = 1");
             stmt.setString(1, title);
             stmt.setLong(2, userId);
             ResultSet rs = stmt.executeQuery();
@@ -120,7 +120,7 @@ public class MySQLAdsDao implements Ads {
     public List<Ad> SearchedAd(String userInput) {
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM ads where title  LIKE CONCAT('%', ?, '%')");
+            stmt = connection.prepareStatement("SELECT * FROM ads where title LIKE CONCAT('%', ?, '%') AND active = 1");
             stmt.setString(1,userInput);
             ResultSet rs = stmt.executeQuery();
             return createAdsFromResults(rs);
@@ -136,7 +136,7 @@ public class MySQLAdsDao implements Ads {
         PreparedStatement pst = null;
         try {
 
-            pst = connection.prepareStatement("SELECT * FROM ads WHERE ads.id = ?");
+            pst = connection.prepareStatement("SELECT * FROM ads WHERE ads.id = ? AND active = 1");
             pst.setString(1, singleAd);
             ResultSet rs = pst.executeQuery();
             return createAdsFromResults(rs);
