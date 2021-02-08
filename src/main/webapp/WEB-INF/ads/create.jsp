@@ -14,6 +14,9 @@
     </script>
 </head>
 <body>
+    ${title_error}
+    ${description_error}
+    ${category_error}
     <div class="container">
         <h1>Create a new Ad</h1>
         <form action="/ads/create" method="post">
