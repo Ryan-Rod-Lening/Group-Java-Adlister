@@ -7,19 +7,23 @@
     </jsp:include>
     <style>
         body:not(.leftNav) {
-            background-color: #a6b6c1;
+            background-color: whitesmoke;
         }
     </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+
+<jsp:include page="/WEB-INF/partials/profileNavbar.jsp" />
+<div class="container">
+    <h1 class="text-center mt-4 mb-4">Viewing all ads!</h1>
+</div>
 <jsp:include page="/WEB-INF/partials/leftNav.jsp" />
 
 <div class="container-fluid d-flex flex-wrap: wrap">
     <div class="row row-cols-3 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
     <c:forEach var="ad" items="${ads}">
-        <div class="col-lg-4">
-            <div class="card h-100 w-100" style="width: 18rem;">
+        <div class="col-lg-4 m-auto">
+            <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h2>${ad.title}</h2>
                     <p class="card-text">${ad.description}</p>
