@@ -34,16 +34,16 @@ public class CreateAdServlet extends HttpServlet {
             request.getParameter("description")
         );
 
-        validate validate = new validate();
-        boolean validAttempt = validate.authenticate(ad.getTitle(),ad.getDescription(),ad.getCategory(),request);
-        if (validAttempt) {
-            validate.clearAttributes(request);
-            request.getSession().setAttribute("user", user);
-
-            response.sendRedirect("/ads");
-        } else {
-            response.sendRedirect("/create");
-        }
+//        validate validate = new validate();
+//        boolean validAttempt = validate.authenticate(ad.getTitle(),ad.getDescription(),ad.getCategory(),request);
+//        if (validAttempt) {
+//            validate.clearAttributes(request);
+//            request.getSession().setAttribute("user", user);
+//
+//            response.sendRedirect("/ads");
+//        } else {
+//            response.sendRedirect("/create");
+//        }
 
         DaoFactory.getAdsDao().insert(ad);
         Long searchedAd = DaoFactory.getAdsDao().getAdById(user.getId(), request.getParameter("title"));

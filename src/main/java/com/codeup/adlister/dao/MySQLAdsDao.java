@@ -128,6 +128,21 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error retrieving matching ads.", e);
         }
     }
+    @Override
+    public List<Ad>CategorySearch(String userInput){
+        System.out.println(userInput);
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = connection.prepareStatement("SELECT ads.title, ads.description, GROUP_CONCAT(categories.name) as 'categories.name' FROM ad_category JOIN categories ON categories.id = ad_category.category_id JOIN ads ON ads.id = ad_category.ad_id where ads.title LIKE CONCAT('%',?,'%') OR categories.name LIKE CONCAT('%',?,'%') OR ads.description LIKE CONCAT('%',?,'%')");
+            stmt.setString(1,userInput);
+            ResultSet rs = stmt.executeQuery();
+            System.out.println(rs);
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving matching ads.", e);
+        }
+    }
 
 
     @Override
@@ -136,7 +151,7 @@ public class MySQLAdsDao implements Ads {
         PreparedStatement pst = null;
         try {
 
-            pst = connection.prepareStatement("SELECT * FROM ads WHERE ads.id = ?");
+            pst = connection.prepareStatement("SELECT * FROM ads WHERE title = ?");
             pst.setString(1, singleAd);
             ResultSet rs = pst.executeQuery();
             return createAdsFromResults(rs);

@@ -18,7 +18,8 @@
 <%--    title--%>
 
 <%--    cars for ads--%>
-    <container class="container-fluid">
+    <container>
+    <div class="container-fluid">
         <div class="row row-cols-3 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
             <c:forEach var="ad" items="${ads}">
                 <div class="col-lg-4">
@@ -31,12 +32,12 @@
                             </c:forEach>
 
                         </div>
-                        <a href="/ads/single?ad-id=${ad.title}" name="viewbtn" class="btn btn-primary">View Ad</a>
+                        <a href="/ads/single?ad-title=${ad.title}" name="viewbtn" class="btn btn-primary">View Ad</a>
                     </div>
                 </div>
             </c:forEach>
         </div>
-    </container>
+    </div>
     </container>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
