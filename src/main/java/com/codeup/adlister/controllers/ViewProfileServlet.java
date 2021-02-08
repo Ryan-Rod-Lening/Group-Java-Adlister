@@ -49,12 +49,14 @@ public class ViewProfileServlet extends HttpServlet {
             req.setAttribute("ads", allAdsWithoutCat);
             req.setAttribute("adsCategory", allAdsWithCat);
             req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req, resp);
-        } else if (req.getParameter("confirmDelete").equalsIgnoreCase("confirm")) {
-            long deleteAdId = Long.parseLong(req.getParameter("ad_id"));
-            Ad deleteAd = new Ad(deleteAdId);
-            DaoFactory.getAdsDao().deleteAd(deleteAd);
-            resp.sendRedirect("/profile");
-        } else {
+        } else if (req.getParameter("confirmDelete") != null) {
+            if (req.getParameter("confirmDelete").equalsIgnoreCase("confirm")) {
+                long deleteAdId = Long.parseLong(req.getParameter("ad_id"));
+                Ad deleteAd = new Ad(deleteAdId);
+                DaoFactory.getAdsDao().deleteAd(deleteAd);
+                resp.sendRedirect("/profile");
+            }
+            } else {
             User userUpdateInfo = new User(getUserSession.getId(), inputUsername, inputEmail);
             DaoFactory.getUsersDao().updateUser(userUpdateInfo);
             User updatedUser = DaoFactory.getUsersDao().findByUsername(userUpdateInfo.getUsername());
