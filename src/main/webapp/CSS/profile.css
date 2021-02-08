@@ -74,3 +74,31 @@
     from {top: -300px; opacity: 0}
     to {top: 0; opacity: 1}
 }
+
+/* =================================
+  Form Validation
+==================================== */
+
+.error {
+    border: solid 2px red;
+}
+
+.normal-text {
+    color: #184f68;
+}
+
+.error-text {
+    color: red;
+}
+
+.activity-error {
+    margin-top: 10px;
+}
+
+.email-valid {
+    color: darkgreen;
+}
+
+.email-error {
+    color: red;
+}

@@ -30,6 +30,13 @@ public class ViewProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String inputUsername = req.getParameter("inputUsername");
         String inputEmail = req.getParameter("inputEmail");
+        String editAdTitle = req.getParameter("adTitle");
+        String editDescriptionTitle = req.getParameter("adDescription");
+
+//        if (editAdTitle != null && editDescriptionTitle != null) {
+//
+//        }
+
         User getUserSession = (User) req.getSession().getAttribute("user");
         User user1 = DaoFactory.getUsersDao().findByUsername(inputUsername);
         User user2 = DaoFactory.getUsersDao().findByEmail(inputEmail);
